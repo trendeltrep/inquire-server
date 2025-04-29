@@ -7,8 +7,7 @@ async function bootstrap() {
 
   app.enableCors({
     origin: ['http://localhost:3000',
-      'https://inquire-client-9ehhmjtet-maksyms-projects-e7f962b7.vercel.app/', 
-      'https://inquire-client-coral.vercel.app/'],
+      'inquire-client-two.vercel.app'],
   });
 
   app.setGlobalPrefix('api');

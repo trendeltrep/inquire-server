@@ -18,13 +18,17 @@ export class PostsController {
 
   @Get()
   findPaginated(
-    @Query('page') page = '1',
-    @Query('limit') limit = '5',
+    @Query('page') page?: string,
+    @Query('limit') limit?: string,
   ): Promise<BlogPost[]> {
+    if (!page || !limit) {
+      return this.postsService.findAll();
+    }
     const pageNum = parseInt(page, 10);
     const limitNum = parseInt(limit, 10);
     return this.postsService.findPaginated(pageNum, limitNum);
   }
+
 
   @Get(':id')
   findOne(@Param('id', ParseIntPipe) id: number): Promise<BlogPost> {

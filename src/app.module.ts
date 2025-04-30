@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
-import { Post } from './posts/post.entity';
-import { Comment } from './comments/comment.entity';
-import { PostsModule } from './posts/post.module';
-import { CommentsModule } from './comments/comment.module';
+import { Post } from 'src/posts/post.entity';
+import { Comment } from 'src/comments/comment.entity';
+import { PostsModule } from 'src/posts/post.module';
+import { CommentsModule } from 'src/comments/comment.module';
 
 @Module({
   imports: [

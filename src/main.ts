@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
-import { PostsService } from './posts/post.service';
+import { AppModule } from 'src/app.module';
+import { PostsService } from 'src/posts/post.service';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -12,6 +12,7 @@ async function bootstrap() {
 
   app.setGlobalPrefix('api');
 
+  // Seed the database
   const postsService = app.get(PostsService);
 
   const existingPosts = await postsService.findAll();

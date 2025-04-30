@@ -9,8 +9,8 @@ import {
   ParseIntPipe,
   Query,
 } from '@nestjs/common';
-import { PostsService } from './post.service';
-import { Post as BlogPost } from './post.entity';
+import { PostsService } from 'src/posts/post.service';
+import { Post } from 'src/posts/post.entity';
 
 @Controller('posts')
 export class PostsController {
@@ -20,7 +20,7 @@ export class PostsController {
   findPaginated(
     @Query('page') page?: string,
     @Query('limit') limit?: string,
-  ): Promise<BlogPost[]> {
+  ): Promise<Post[]> {
     if (!page || !limit) {
       return this.postsService.findAll();
     }
@@ -31,20 +31,20 @@ export class PostsController {
 
 
   @Get(':id')
-  findOne(@Param('id', ParseIntPipe) id: number): Promise<BlogPost> {
+  findOne(@Param('id', ParseIntPipe) id: number): Promise<Post> {
     return this.postsService.findOne(id);
   }
 
   @HttpPost()
-  create(@Body() postData: Partial<BlogPost>): Promise<BlogPost> {
+  create(@Body() postData: Partial<Post>): Promise<Post> {
     return this.postsService.create(postData);
   }
 
   @Put(':id')
   update(
     @Param('id', ParseIntPipe) id: number,
-    @Body() updateData: Partial<BlogPost>,
-  ): Promise<BlogPost> {
+    @Body() updateData: Partial<Post>,
+  ): Promise<Post> {
     return this.postsService.update(id, updateData);
   }
 

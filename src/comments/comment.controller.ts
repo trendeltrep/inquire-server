@@ -1,6 +1,6 @@
 import { Controller, Post as HttpPost, Get, Param, Body, ParseIntPipe } from '@nestjs/common';
-import { CommentsService } from './comment.service';
-import { Comment } from './comment.entity';
+import { CommentsService } from 'src/comments/comment.service';
+import { Comment } from 'src/comments/comment.entity';
 
 @Controller('posts/:postId/comments')
 export class CommentsController {
